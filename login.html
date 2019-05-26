@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paw-sitive</title>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(() => {
+$('#loginAut').click(() => {
+    const requestURL = 'loginAuthorization/' + $('#userEmail').val() +'/'+ $('#userPassword').val();
+    console.log('making ajax request to:',requestURL);
+    
+    $.ajax({
+      url: requestURL,
+      type: 'GET',
+      dataType : 'json', // this URL returns data in JSON format
+      success: (data) => {
+	  console.log(data);
+	   
+	   if (data.length > 0 ){
+		 //window.open("/pet_registration.html","child");	
+		 //window.open("/pet_registration.html", "child", "toolbar=no,scrollbars=no,resizable=yes,top=200,left=400,width=100,height=400,location=no, title=no, status=no");		
+
+		var iframe = '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="pet_registration.html" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+		var win = window.open("","","width=1000,height=700,toolbar=no,menubar=no,resizable=yes");
+		win.document.write(iframe);	
+		
+	   }
+	   else	   
+       { 
+	     alert("Invalid user or password");
+       }		
+      }
+    });
+  });
+});
+
+</script>
+
+<script src='validation.js' type='text/javascript'></script>
+</head>
+<style>
+body
+ {font-family: Arial, Helvetica, sans-serif;
+  background-image: url(images/wallpaper.jpg);
+	min-height: 60%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=email] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: lightblue;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: lightblue;
+  outline: none;
+}
+
+hr {
+  border: 1px solid black;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:0.8;
+}
+
+
+/* Float cancel and signup buttons and add an equal width */
+.signupbtn {
+  width: 50%;
+  background-color: lightblue;
+  color: black;
+  font-weight: bold;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 100px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.footer
+{
+  width:100%;
+  height:80px;
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 0px;
+  background:black;
+  padding:15px; 
+  font-size: 17px;
+  color: white;
+  text-align:center;
+  line-height:35px;
+}
+</style>
+<body>
+<header class="login_page_header" style="position: relative; top: 0px;">
+	<nav>
+    <a href="homepage.html"><img class = "logo" src="images/paw.png"></a>
+		<div class="menu">
+		<ul>
+			<li><a href="homepage.html">HOME</a></li>
+			<li><a href="login.html">PET REGISTRATION</a></li>
+			<li><a href="testing.html">PETS FOR ADOPTION</a></li>
+			<li><a href="contact_us.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+</header>
+<br>
+<center>
+
+  <div class="container">
+    
+    <p><b>Log-in to register pets (Only authorised users are allowed)</b></p>
+    <hr>
+    <label for="email"><b>Email</b></label>
+		<br>
+			<input id="userEmail" type="email" placeholder="Enter Email" name="email" required>
+		<br>
+	
+    <label for="password"><b>Password</b></label>
+	<br/>
+    <input id= 'userPassword'type="password" placeholder="Enter Password" name="password" required >
+    
+    
+    <div class="clearfix">
+      <button id= "loginAut" class="signupbtn">Login</button>
+    </div>
+  </div>
+
+</center>
+<div class="footer">
+    &copy 2019, Pawsitive , All rights reserved.
+    </div>
+
+
+<script type="text/javascript">
+	$(window).on("scroll", function(){
+		if($(window).scrollTop())
+		{
+			$('nav').addClass('black');
+		}
+		else
+		{
+			$('nav').remove('black');
+		}
+	})
+</script>
+<script>
+	$('nav a').on('click', function(event)
+	{
+		if(this.hash !=='')
+		{
+			event.preventDefault();
+			const hash = this.hash;
+			$('html,body').animate(
+				{
+					scrollTop: $(hash).offset().top
+				},1000);
+		}
+	});		  
+</script>
+</body>
+</html>
