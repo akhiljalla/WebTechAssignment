@@ -1,0 +1,31 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "pawsitive-uob",
+  "main": "server_new.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node server_new.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhiljalla/WebTechAssignment.git"
+  },
+  "keywords": [
+    "express",
+    "fs",
+    "node",
+    "cryptr",
+    "express-fileupload",
+    "body-parser",
+    "http",
+    "path",
+    "sqlite3"
+  ],
+  "author": "akhil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akhiljalla/WebTechAssignment/issues"
+  },
+  "homepage": "https://github.com/akhiljalla/WebTechAssignment#readme"
+}
