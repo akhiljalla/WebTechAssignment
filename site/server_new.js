@@ -1,6 +1,8 @@
 var express = require("express");
 var fs = require('fs');
 var http = require('http');
+const https = require('https');
+
 const fileUpload = require('express-fileupload');
 const Cryptr = require('cryptr');
 const cryptr = new Cryptr('myTotalySecretKey')
@@ -170,6 +172,14 @@ app.get('/pet_information/:petid',(req,res) => {
 });
 
 
-app.listen(3000, function(){
-    console.log("LOGGED IN");
+// app.listen(3000, function(){
+//     console.log("LOGGED IN");
+// })
+//http.createServer(app).listen(80);
+
+https.createServer({
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.crt')
+}, app).listen(3000, () => {
+  console.log('Listening...')
 })
